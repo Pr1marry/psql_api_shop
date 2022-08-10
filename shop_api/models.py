@@ -21,9 +21,9 @@ class Category(models.Model):
 class Product(models.Model):
     cat = models.ForeignKey(Category, related_name='products',
                             on_delete=models.CASCADE,
-                            verbose_name = 'Выберите категорию')
+                            verbose_name='Выберите категорию')
     name = models.CharField(max_length=150, db_index=True, verbose_name='Наименование')
-    slug = models.SlugField(max_length=150, db_index=True)
+    slug = models.SlugField(max_length=150, db_index=True, unique=True)
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True, verbose_name='Фото')
     description = models.TextField(blank=True, verbose_name='Описание товара')
     price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Цена')
