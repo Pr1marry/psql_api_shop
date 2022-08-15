@@ -1,8 +1,9 @@
 from rest_framework import generics, mixins
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
-from .models import Product
-from .serializers import ProductSerializer
+from .models import Product, Category
+from .serializers import ProductSerializer, CatSerializer
+
 
 #
 # class ProductViewSet(mixins.CreateModelMixin,
@@ -14,6 +15,11 @@ from .serializers import ProductSerializer
 #
 #     queryset = Product.objects.all()
 #     serializer_class = ProductSerializer
+
+
+class CatApiList(generics.ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CatSerializer
 
 
 class ProductApiList(generics.ListCreateAPIView):
