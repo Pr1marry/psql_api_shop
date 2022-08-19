@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -42,4 +43,10 @@ class Product(models.Model):
         return reverse('shop:product_detail', args=[self.id, self.slug])
 
 
+class Bin(models.Model):
+    customer = models.ManyToManyField(User)
+    prod = models.ManyToManyField(Product)
+    value = models.IntegerField(default=1, verbose_name='Колличество товара')
 
+    def __str__(self):
+        return Bin.customer

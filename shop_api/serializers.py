@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import Product, Category
+from .models import Product, Category, Bin
 
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
+# from rest_framework_simplejwt.tokens import RefreshToken
+# from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+# from rest_framework_simplejwt.views import TokenObtainPairView
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -15,6 +15,12 @@ class ProductSerializer(serializers.ModelSerializer):
 class CatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
+        fields = '__all__'
+
+
+class CartSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bin
         fields = '__all__'
 
 
